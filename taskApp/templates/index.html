@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <script src="\static\css\task.js" defer></script>
+    <link rel="stylesheet" href="static\css\style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="tasks">
+            {% for task in tasks %}
+            <div id="{{task.id}}">
+                <form action="/update" method="POST" id="updateForm{{task.id}}">
+                    <input type="text" name="name" placeholder="Name" value="{{task.name}}" disabled>
+                    <input type="text" name="phone" placeholder="Explanation" value="{{task.explain}}" disabled>
+                    <input type="text" name="phone" placeholder="Status" value="{{task.status}}" disabled>
+                    <input type="text" name="phone" placeholder="Date" value="{{task.date}}" disabled>
+                    <input type="submit" value="Update">
+                </form>
+                <button onclick="unlock('updateForm{{task.id}}')" >update</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+#tasks {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-items: space-between;
+    
+}
+
+#tasks > * {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
