@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}<div class="title"></div>{% endblock %}</title>
+</head>
+<body>
+    <div id='navigation'>
+        Your task
+        <div id="navbar">
+            <a href="{% url 'home' %}"><span style="cursor:pointer">Main</span><br></a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}"><span style="cursor:pointer">Dashboard</span><br></a>
+            <a href="{% url 'logout' %}"><span style="cursor:pointer">Logout</span><br></a>
+            {% else %}
+            <a href="{% url 'register' %}"><span style="cursor:pointer">Register</span></a>
+            <a href="{% url 'login' %}"><span style="cursor:pointer">Login</span><br></a>
+            {% endif %}
+        </div>
+    </div>
+    <main>
+    </aside>
+    </main>
+</body>               
+</html>
