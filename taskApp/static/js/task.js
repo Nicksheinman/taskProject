@@ -1,5 +1,6 @@
 
 
-function unlocker(){
-    var inputs = document.getElementById('') 
+function unlocker(thisId){
+    var inputs = document.getElementById('thisID') 
+    this
 }
