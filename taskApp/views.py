@@ -31,17 +31,17 @@ def register(request):
     return render(request=request, template_name='register.html', context={"form":form})
 
 def login(request):
-    form=LoginForm()
     if request.method== "POST":
-        form=LoginForm(request=request,data=request.POST)
-        if form.is_valid():
-            username= request.POST.get("username")
-            password= request.POST.get("password")
-            user=authenticate(request=request, username=username, password=password)
-            if user is not None:
-                auth.login(request=request, user=user)
-                return redirect('/')
-    return render(request=request,template_name='login.html', context={'form': form})
+        username=request.POST['username']
+        password=request.POST['password']
+        user=authenticate(request=request, username=username, password=password)
+        if user is not None:
+            auth.login(request=request, user=user)
+            return redirect('/')
+        else:
+            return render(request=request,template_name='login.html', context={ "message" : "password or username is incorrect" })
+    else:
+        return render(request=request,template_name='login.html')
 
 def logout(request):
     auth.logout(request)
