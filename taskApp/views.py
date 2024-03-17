@@ -9,8 +9,7 @@ from faker import *
 # Create your views here.
 
 def home(request):
-    form=AddTask()
-    return render(template_name='index.html', request=request,context={"form":form,"tasks":Task.objects.all()})
+    return render(template_name='index.html', request=request)
 
 def create_task(request):
     for a in range(30):
@@ -49,7 +48,9 @@ def logout(request):
 
 @login_required(login_url='login/')
 def dashboard(request):
-    return render(request=request, template_name='dashboard.html',context={"form":AddTask(),"tasks":Task.objects.all()})
+    new_task=(Task.objects.all())
+    print((new_task))
+    return render(request=request, template_name='dashboard.html',context={"tasks":Task.objects.all()})
 
 @login_required(login_url='login/')
 def create(request):
@@ -66,13 +67,14 @@ def read(request,pk):
 @login_required(login_url='login/')
 def update(request, pk):
     task= Task.objects.get(id=pk)
-    tform= UpdateForm(instance=task)
     if request.method == "POST":
-        tform=UpdateForm(request.POST,instance=task)
-        if tform.is_valid():
-            tform.save()
-            return redirect("dashboard")
-    return render(request=request, template_name='update.html', context={'form':tform})
+        task.name=request.POST['name']
+        task.explain=request.POST['explain']
+        task.date=request.POST['date']
+        task.status=request.POST['status']
+        task.save()
+        return redirect("dashboard")
+    return redirect('dashboard')
 
 def deleteT(request, pk):
     task= Task.objects.get(id=pk)
