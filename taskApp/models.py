@@ -1,3 +1,4 @@
+
 from django.db import models
 
 # Create your models here.
@@ -7,3 +8,4 @@ class Task(models.Model):
     explain=models.CharField(max_length=256)
     status=models.CharField(max_length=256)
     date=models.CharField(max_length=256)
+
