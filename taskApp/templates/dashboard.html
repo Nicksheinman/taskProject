@@ -29,7 +29,7 @@
                     <td> <input name="date" type="date" value="{{task.date}}"></td>
                     <td><select name="status" name="status" id="">{{task.status}}
                         <option value="complete" {% if task.status == "complete"%}selected{% endif %}>complete</option>
-                        <option value="icomplete" {% if task.status == "incomplete"%}selected{% endif %}>incomplete</option>
+                        <option value="incomplete" {% if task.status == "incomplete"%}selected{% endif %}>incomplete</option>
                     </select></td>
                     <td><button>Update</button></td>
                 </form>

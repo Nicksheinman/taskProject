@@ -2,15 +2,16 @@
 {% block content %}
 <div id="create">
     <form method="POST" class='create'>
+        <div class="taskLogo"><h2>Create yout task!</h2></div>
         {% csrf_token %}
-        <td><input name="name" id="name" type="text"></td>
-        <td><input name="explain" id='explain' type="text"></td>
-        <td> <input name="date" id='date' type="date"></td>
-        <td><select name="status" id=status name="status" id="">
+        <div class="createName">Task name:<input name="name" type="text"></div>
+        <div class="createExplain">Task explanation:<input name="explain" type="text"></div>
+        <div class="createDate">Task date:<input name="date" id='date' type="date"></div>
+        <div class="createStatus">Status of the task:<select name="status" id=status name="status" id="">
             <option value="complete">complete</option>
-            <option value="icomplete" selected>incomplete</option>
-        </select></td>
-        <button type='submit'>Create</button>
+            <option value="incomplete" selected>incomplete</option>
+        </select></div>
+        <div class="createButton"><button type='submit'>Create</button></div>
     </form>
 </div>
 {% endblock content %}

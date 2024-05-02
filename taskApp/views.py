@@ -55,8 +55,11 @@ def dashboard(request):
 @login_required(login_url='login/')
 def create(request):
     if request.method == "POST":
-        Task(request.POST).save()
-        return HttpResponseRedirect("dashboard")
+        post_task=request.POST
+        task=Task()
+        task.name, task.explain, task.status, task.date=request.POST['name'], request.POST['explain'], request.POST['status'], request.POST['date']
+        task.save()
+        return redirect("dashboard")
     return render(request=request, template_name='create.html',context={"form":AddTask(),"tasks":Task.objects.all()} )
 
 @login_required(login_url='login/')
